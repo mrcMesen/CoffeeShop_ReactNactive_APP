@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 import { View, Image, Text } from "react-native";
 import { ThemeContext } from "../../context/ThemeContext";
+import { Price } from "../../components/Price";
 
 export const CartProduct = ({ product }) => {
   const { theme } = useContext(ThemeContext);
@@ -19,7 +20,7 @@ export const CartProduct = ({ product }) => {
       <View style={styles.description}>
         <Text style={styles.whiteText}>{name}</Text>
         <Text style={styles.whiteText}>{description}</Text>
-        <Text style={styles.whiteText}>{price}</Text>
+        <Price price={price} />
       </View>
     </View>
   );

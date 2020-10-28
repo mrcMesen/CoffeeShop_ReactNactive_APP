@@ -1,13 +1,22 @@
 import React, { useState, useContext } from "react";
+
+/**Context and Actions */
 import { ThemeContext } from "../../context/ThemeContext";
 import { CartContext } from "../../context/CartContext";
 import { CartActions } from "../../actions/CartActions";
-import { currencyFormat } from "../../utils/currencyFormat";
+
+/**React Native Components */
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, Image, Text, TextInput } from "react-native";
+import { KeyboardAvoidingView, Platform, Keyboard } from "react-native";
+import { TouchableWithoutFeedback } from "react-native";
+
+/**Own Components */
 import { ManageCount } from "../../components/ManageCount";
 import { Button } from "../../components/Button";
+import { Price } from "../../components/Price";
+import { currencyFormat } from "../../utils/currencyFormat";
 
 export const Product = ({ route, navigation }) => {
   const { theme } = useContext(ThemeContext);
@@ -26,47 +35,52 @@ export const Product = ({ route, navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.root}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: image,
-          }}
-        />
-        <View style={styles.description}>
-          <View style={styles.descriptionHeader}>
-            <Text style={[styles.whiteText]}>{name}</Text>
-            <Text style={[styles.whiteText]}>
-              {currencyFormat.format(price)}
-            </Text>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.root}>
+            <Image
+              style={styles.image}
+              source={{
+                uri: image,
+              }}
+            />
+            <View style={styles.description}>
+              <View style={styles.descriptionHeader}>
+                <Text style={[styles.whiteText]}>{name}</Text>
+                <Price price={price} />
+              </View>
+              <Text style={[styles.whiteText, styles.descriptionText]}>
+                {description}
+              </Text>
+            </View>
+            <TextInput
+              style={styles.inputText}
+              autoFocus={false}
+              multiline
+              numberOfLines={4}
+              value={orderDetails}
+              onChangeText={(text) => setOrderDetails(text)}
+              placeholder='Notas Especiales (sin lechuga,sin tomate, etc)'
+            />
+            <View style={styles.actions}>
+              <ManageCount
+                count={count}
+                increase={() => setCount((prevCount) => prevCount + 1)}
+                decrease={() => setCount((prevCount) => prevCount - 1)}
+              />
+              <Button
+                text={`Agregar \n${currencyFormat.format(count * price)}`}
+                numberOfLines={2}
+                style={{ paddingHorizontal: 30, paddingVertical: 0 }}
+                action={handleAddProduct}
+              />
+            </View>
           </View>
-          <Text style={[styles.whiteText, styles.descriptionText]}>
-            {description}
-          </Text>
-        </View>
-        <TextInput
-          style={styles.inputText}
-          autoFocus={false}
-          multiline
-          numberOfLines={4}
-          value={orderDetails}
-          onChangeText={(text) => setOrderDetails(text)}
-          placeholder='Notas Especiales (sin lechuga,sin tomate, etc)'
-        />
-        <View style={styles.actions}>
-          <ManageCount
-            count={count}
-            increase={() => setCount((prevCount) => prevCount + 1)}
-            decrease={() => setCount((prevCount) => prevCount - 1)}
-          />
-          <Button
-            text={`Agregar \n${currencyFormat.format(count * price)}`}
-            numberOfLines={2}
-            style={{ paddingHorizontal: 30, paddingVertical: 0 }}
-            action={handleAddProduct}
-          />
-        </View>
-      </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

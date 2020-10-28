@@ -3,6 +3,8 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { View, Image, ImageBackground } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { KeyboardAvoidingView, Platform, Keyboard } from "react-native";
+import { TouchableWithoutFeedback } from "react-native";
 
 import { LoginForm } from "../../components/LoginForm";
 
@@ -11,16 +13,23 @@ import logo from "../../assets/brand/logo.png";
 
 export const Login = ({ navigation }) => {
   return (
-    <View style={styles.root}>
-      <ImageBackground source={background} style={styles.imageBackground}>
-        <LinearGradient
-          colors={["rgba(0,0,0,0.8)", "rgba(0,0,0,1)"]}
-          style={styles.gradient}
-        />
-        <Image source={logo} style={styles.logo} />
-        <LoginForm login={() => navigation.navigate("Home")} />
-      </ImageBackground>
-    </View>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.root}>
+          <ImageBackground source={background} style={styles.imageBackground}>
+            <LinearGradient
+              colors={["rgba(0,0,0,0.8)", "rgba(0,0,0,1)"]}
+              style={styles.gradient}
+            />
+            <Image source={logo} style={styles.logo} />
+            <LoginForm login={() => navigation.navigate("Home")} />
+          </ImageBackground>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 

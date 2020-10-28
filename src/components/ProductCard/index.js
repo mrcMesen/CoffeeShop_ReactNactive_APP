@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { ProductsContext } from "../../context/ProductsContext";
 import { ProductsActions } from "../../actions/ProductsActions";
-import { currencyFormat } from "../../utils/currencyFormat";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import {
@@ -12,6 +11,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
+import { Price } from "../../components/Price";
 
 import { AntDesign } from "@expo/vector-icons";
 
@@ -51,9 +51,7 @@ export const ProductCard = ({ product }) => {
         <View style={styles.description}>
           <View style={styles.descriptionHeader}>
             <Text style={[styles.whiteText]}>{name}</Text>
-            <Text style={[styles.whiteText]}>
-              {currencyFormat.format(price)}
-            </Text>
+            <Price price={price} />
           </View>
           <Text style={[styles.whiteText, styles.descriptionText]}>
             {description}
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   descriptionText: {
-    marginTop: 2,
+    marginTop: 4,
     fontSize: 11,
     fontStyle: "italic",
     fontWeight: "200",
