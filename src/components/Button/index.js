@@ -3,7 +3,13 @@ import { StyleSheet } from "react-native";
 import { Text, TouchableOpacity } from "react-native";
 import { ThemeContext } from "../../context/ThemeContext";
 
-export const Button = ({ color = "primary", text, action, style }) => {
+export const Button = ({
+  color = "primary",
+  text,
+  action,
+  style,
+  numberOfLines = 1,
+}) => {
   const { theme } = useContext(ThemeContext);
   const styles = useStyles(theme);
   return (
@@ -20,7 +26,9 @@ export const Button = ({ color = "primary", text, action, style }) => {
       ]}
       onPress={action}
     >
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text style={styles.buttonText} numberOfLines={numberOfLines}>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };

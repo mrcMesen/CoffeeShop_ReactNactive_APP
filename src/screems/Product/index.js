@@ -1,24 +1,24 @@
 import React, { useState, useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { ProductsContext } from "../../context/ProductsContext";
 // import { CartActions } from "../../actions/CartActions";
 import { currencyFormat } from "../../utils/currencyFormat";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { View, Image, Text, TextInput } from "react-native";
-import { RoundButton } from "../../components/RoundButton";
+import { ManageCount } from "../../components/ManageCount";
 import { Button } from "../../components/Button";
 
 export const Product = ({ route }) => {
   const { theme } = useContext(ThemeContext);
   const styles = useStyles(theme);
-  const { allProducts } = useContext(ProductsContext);
-  const { productId } = route.params;
-  const product = allProducts.filter((product) => product.id === productId);
-  const { price, image, description, name } = product[0];
+  const { price, image, description, name, id } = route.params;
   const [count, setCount] = useState(1);
   const [orderDetails, setOrderDetails] = useState("");
+
+  const handleAddProduct = () => {
+    //
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -45,18 +45,21 @@ export const Product = ({ route }) => {
           autoFocus={false}
           multiline
           numberOfLines={4}
+          value={orderDetails}
+          onChangeText={(text) => setOrderDetails(text)}
           placeholder='Notas Especiales (sin lechuga,sin tomate, etc)'
         />
         <View style={styles.actions}>
-          <View style={styles.actionsCount}>
-            <RoundButton text='-' color='secondary' action={() => {}} />
-            <Text style={styles.count}>{count}</Text>
-            <RoundButton text='+' color='secondary' action={() => {}} />
-          </View>
+          <ManageCount
+            count={count}
+            increase={() => setCount((prevCount) => prevCount + 1)}
+            decrease={() => setCount((prevCount) => prevCount - 1)}
+          />
           <Button
-            text='Agregar'
-            style={{ paddingHorizontal: 30 }}
-            action={() => {}}
+            text={`Agregar \n${currencyFormat.format(count * price)}`}
+            numberOfLines={2}
+            style={{ paddingHorizontal: 30, paddingVertical: 0 }}
+            action={handleAddProduct}
           />
         </View>
       </View>
@@ -107,14 +110,5 @@ const useStyles = (theme) =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-    },
-    actionsCount: {
-      flexDirection: "row",
-      alignItems: "center",
-    },
-    count: {
-      color: "#FFFFFF",
-      fontSize: 24,
-      marginHorizontal: 15,
     },
   });

@@ -23,7 +23,7 @@ export const ProductCard = ({ product }) => {
   const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback
-      onPress={() => navigation.navigate("Product", { productId: id })}
+      onPress={() => navigation.navigate("Product", { ...product.item })}
     >
       <View style={styles.root}>
         <View style={styles.header}>
