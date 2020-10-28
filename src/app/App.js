@@ -2,9 +2,10 @@ import { registerRootComponent } from "expo";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider } from "../context/ThemeContext";
 import { ProductsProvider } from "../context/ProductsContext";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { CartProvider } from "../context/CartContext";
 
 import { Routing } from "./Routing";
 
@@ -13,8 +14,10 @@ function App() {
     <SafeAreaProvider>
       <ThemeProvider>
         <ProductsProvider>
-          <Routing />
-          <StatusBar style='auto' />
+          <CartProvider>
+            <Routing />
+            <StatusBar style='auto' />
+          </CartProvider>
         </ProductsProvider>
       </ThemeProvider>
     </SafeAreaProvider>

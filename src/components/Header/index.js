@@ -10,13 +10,21 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
-export const Header = ({ navigation, showBackButton = false }) => {
+export const Header = ({
+  navigation,
+  showBackButton = false,
+  goHome = false,
+}) => {
   const insets = useSafeAreaInsets();
   const { theme } = useContext(ThemeContext);
   return (
     <View style={[styles.header, { paddingTop: Math.max(insets.top, 16) }]}>
       {showBackButton && (
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() =>
+            goHome ? navigation.push("Home") : navigation.goBack()
+          }
+        >
           <Ionicons
             name='ios-arrow-back'
             size={36}

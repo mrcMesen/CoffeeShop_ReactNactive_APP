@@ -21,7 +21,7 @@ const Stack = createStackNavigator();
 export const Routing = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen
           name='Login'
           component={Login}
@@ -45,7 +45,7 @@ export const Routing = () => {
           name='Cart'
           component={Cart}
           options={{
-            header: (props) => <Header {...props} showBackButton />,
+            header: (props) => <Header {...props} showBackButton goHome />,
           }}
         />
         <Stack.Screen

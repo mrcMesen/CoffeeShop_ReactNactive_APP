@@ -1,23 +1,27 @@
 import React, { useState, useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-// import { CartActions } from "../../actions/CartActions";
+import { CartContext } from "../../context/CartContext";
+import { CartActions } from "../../actions/CartActions";
 import { currencyFormat } from "../../utils/currencyFormat";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
 import { View, Image, Text, TextInput } from "react-native";
 import { ManageCount } from "../../components/ManageCount";
 import { Button } from "../../components/Button";
 
-export const Product = ({ route }) => {
+export const Product = ({ route, navigation }) => {
   const { theme } = useContext(ThemeContext);
   const styles = useStyles(theme);
+  const { dispatch } = useContext(CartContext);
+  const { addProduct } = CartActions;
   const { price, image, description, name, id } = route.params;
   const [count, setCount] = useState(1);
   const [orderDetails, setOrderDetails] = useState("");
 
   const handleAddProduct = () => {
-    //
+    dispatch(addProduct({ product: route.params, count, orderDetails }));
+    navigation.popToTop();
+    navigation.navigate("Cart");
   };
 
   return (
