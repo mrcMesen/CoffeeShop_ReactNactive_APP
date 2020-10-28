@@ -5,7 +5,7 @@ export const CartReducer = (state, action) => {
     case CartDispatcher.ADD_PRODUCT:
       return {
         ...state,
-        products: [...state.products, action.payload],
+        products: [...state.products, { ...action.payload, date: new Date() }],
       };
     case CartDispatcher.REMOVE_PRODUCT:
       return {
