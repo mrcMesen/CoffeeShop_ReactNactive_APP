@@ -4,6 +4,11 @@ import { View, Image, Text } from "react-native";
 import { ThemeContext } from "../../context/ThemeContext";
 import { Price } from "../../components/Price";
 
+/**
+ * Compoment for render products in vertical list
+ *
+ * @param {object} product Whole product with price, image, description, name, id
+ */
 export const CartProduct = ({ product }) => {
   const { theme } = useContext(ThemeContext);
   const styles = useStyles(theme);

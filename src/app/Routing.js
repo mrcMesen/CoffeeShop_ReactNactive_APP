@@ -4,24 +4,27 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 /**Screems */
-import { Login } from "../screems/Login";
-import { Home } from "../screems/Home";
-import { Product } from "../screems/Product";
-import { Cart } from "../screems/Cart";
+import { Login } from "../screens/Login";
+import { Home } from "../screens/Home";
+import { Product } from "../screens/Product";
+import { Cart } from "../screens/Cart";
+import { Profile } from "../screens/Profile";
 
 /**Pending */
-import { Home as Products } from "../screems/Home";
-import { Home as Search } from "../screems/Home";
-import { Home as Profile } from "../screems/Home";
+import { Home as Products } from "../screens/Home";
+import { Home as Search } from "../screens/Home";
 
 import { Header } from "../components/Header";
 
 const Stack = createStackNavigator();
 
+/**
+ * Routing APP
+ */
 export const Routing = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login'>
+      <Stack.Navigator initialRouteName='Profile'>
         <Stack.Screen
           name='Login'
           component={Login}

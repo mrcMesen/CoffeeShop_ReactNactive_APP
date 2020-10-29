@@ -3,6 +3,15 @@ import { StyleSheet } from "react-native";
 import { Text, TouchableOpacity } from "react-native";
 import { ThemeContext } from "../../context/ThemeContext";
 
+/**
+ * Button Compoment
+ *
+ * @param {color} string Allow primary and secondary for color
+ * @param {text} string Text for button
+ * @param {action} function Callback to onPress Action
+ * @param {numberOfLines} int Give the number of lines for text in the button
+ */
+
 export const Button = ({
   color = "primary",
   text,

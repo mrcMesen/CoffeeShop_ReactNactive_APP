@@ -1,23 +1,31 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { CartContext } from "../../context/CartContext";
-import { CartProductList } from "../../components/CartProductList";
-import { Price } from "../../components/Price";
 
+/**React Native Components */
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet } from "react-native";
 import { View, Text, ScrollView } from "react-native";
 
+/**Own Components */
+import { CartProductList } from "../../components/CartProductList";
+import { Price } from "../../components/Price";
+import { Line } from "../../components/Line";
+
+/**
+ * Screen to manage Cart and dispatch orders
+ */
 export const Cart = () => {
   const { cart, dispatch } = useContext(CartContext);
   const { theme } = useContext(ThemeContext);
   const styles = useStyles(theme);
 
   return (
-    <ScrollView style={styles.container}>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["right", "bottom", "left"]}>
+      <ScrollView style={styles.container}>
         <View style={styles.root}>
           <Text style={[styles.whiteText, styles.title]}>Su orden</Text>
+          <Line />
           {cart &&
             cart.map((order) => (
               <CartProductList key={order.date} order={order} />
@@ -29,11 +37,12 @@ export const Cart = () => {
                 return accumulator + order.count * order.product.price;
               }, 0)}
               size={22}
-            ></Price>
+            />
           </View>
+          <Line />
         </View>
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

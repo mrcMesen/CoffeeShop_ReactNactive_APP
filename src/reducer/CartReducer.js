@@ -12,7 +12,9 @@ export const CartReducer = (state, action) => {
         ...state,
         products: [
           ...state.products.filter(
-            (product) => product.id !== action.payload.id
+            (order) =>
+              order.product.id !== action.payload.id &&
+              order.date !== action.payload.date
           ),
         ],
       };

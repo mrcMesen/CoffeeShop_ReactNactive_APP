@@ -4,6 +4,13 @@ import { StyleSheet } from "react-native";
 import { RoundButton } from "../../components/RoundButton";
 import { View, Text } from "react-native";
 
+/**
+ * This component manage some count, in this case is used in the product view
+ *
+ * @param {count} int Current state of count
+ * @param {increase} function Callback to increase count
+ * @param {decrease} function Callback to decrease count
+ */
 export const ManageCount = ({ count, increase, decrease }) => {
   return (
     <View style={styles.actionsCount}>

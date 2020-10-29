@@ -2,13 +2,23 @@ import React, { useContext } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemeContext } from "../../context/ThemeContext";
 
+/**React Native Components */
 import { StyleSheet } from "react-native";
 import { View, Image, TouchableOpacity } from "react-native";
 
+/**Icons */
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+
+/**
+ * Custom Header for Stack Navigation
+ *
+ * @param {navigation} object Special object for navigate in app
+ * @param {showBackButton} boolean Show button back in the header
+ * @param {goHome} boolean Use button back to go at Home Sreen
+ */
 
 export const Header = ({
   navigation,

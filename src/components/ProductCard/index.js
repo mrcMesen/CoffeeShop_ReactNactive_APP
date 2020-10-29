@@ -2,19 +2,21 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { ProductsContext } from "../../context/ProductsContext";
 import { ProductsActions } from "../../actions/ProductsActions";
+
+/**React Native Components */
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import {
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native";
-import { Price } from "../../components/Price";
-
+import { View, Image, Text } from "react-native";
+import { TouchableOpacity, TouchableWithoutFeedback } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
+import { Price } from "../../components/Price";
+
+/**
+ * Compoment for render a card product
+ *
+ * @param {object} product Whole product with price, image, description, name, id
+ */
 export const ProductCard = ({ product }) => {
   const { theme } = useContext(ThemeContext);
   const { favProducts, dispatch } = useContext(ProductsContext);

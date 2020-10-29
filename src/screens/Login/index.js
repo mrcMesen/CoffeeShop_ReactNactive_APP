@@ -1,13 +1,16 @@
 import React from "react";
 
+/**React Native Components */
 import { StyleSheet } from "react-native";
 import { View, Image, ImageBackground } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import { KeyboardAvoidingView, Platform, Keyboard } from "react-native";
 import { TouchableWithoutFeedback } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
+/**Own Components */
 import { LoginForm } from "../../components/LoginForm";
 
+/**Assets */
 import background from "../../assets/image/loginBackground.jpg";
 import logo from "../../assets/brand/logo.png";
 

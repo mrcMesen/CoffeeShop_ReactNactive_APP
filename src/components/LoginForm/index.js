@@ -3,6 +3,11 @@ import { StyleSheet } from "react-native";
 import { View, TextInput } from "react-native";
 import { Button } from "../Button";
 
+/**
+ * Section with form for login in the app
+ *
+ * @param {login} function Callback to dispatch in the button login
+ */
 export const LoginForm = ({ login }) => {
   return (
     <View style={styles.root}>

@@ -5,8 +5,8 @@ export const CartActions = {
     type: CartDispatcher.ADD_PRODUCT,
     payload: newProduct,
   }),
-  removeProduct: (productId) => ({
+  removeProduct: (order) => ({
     type: CartDispatcher.REMOVE_PRODUCT,
-    payload: productId,
+    payload: { id: order.product.id, date: order.date },
   }),
 };

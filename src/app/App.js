@@ -9,6 +9,9 @@ import { CartProvider } from "../context/CartContext";
 
 import { Routing } from "./Routing";
 
+/**
+ * Entry point for APP
+ */
 function App() {
   return (
     <SafeAreaProvider>

@@ -1,7 +1,15 @@
 import React, { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 import { StyleSheet } from "react-native";
 import { Text, TouchableOpacity } from "react-native";
-import { ThemeContext } from "../../context/ThemeContext";
+
+/**
+ * Round Button
+ *
+ * @param {color} string Allow primary and secondary for color
+ * @param {text} string Text for button
+ * @param {action} function Callback to onPress Action
+ */
 
 export const RoundButton = ({ color = "primary", text, action, style }) => {
   const { theme } = useContext(ThemeContext);

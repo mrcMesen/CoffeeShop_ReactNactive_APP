@@ -18,6 +18,9 @@ import { Button } from "../../components/Button";
 import { Price } from "../../components/Price";
 import { currencyFormat } from "../../utils/currencyFormat";
 
+/**
+ * Screen to view products and add them to the cart
+ */
 export const Product = ({ route, navigation }) => {
   const { theme } = useContext(ThemeContext);
   const styles = useStyles(theme);
@@ -34,7 +37,7 @@ export const Product = ({ route, navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["right", "bottom", "left"]}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS == "ios" ? "padding" : "height"}
