@@ -8,7 +8,8 @@ Developed by Marco Mesén - [www.marcomesen.com](https://marcomesen.com)
 
 1. run `yarn install`
 2. run `yarn start`
-
+3. create `api.json` file in `src > constants > api.json`
+(Look `api.example.json` to get details about the file)
 ## Tech
 
 - [ReactNative]
