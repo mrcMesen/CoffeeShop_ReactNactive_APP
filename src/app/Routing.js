@@ -24,7 +24,7 @@ const Stack = createStackNavigator();
 export const Routing = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Profile'>
+      <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen
           name='Login'
           component={Login}
