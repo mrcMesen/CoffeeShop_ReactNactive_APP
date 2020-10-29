@@ -18,6 +18,11 @@ export const CartReducer = (state, action) => {
           ),
         ],
       };
+    case CartDispatcher.EMPTY_CART:
+      return {
+        ...state,
+        products: [],
+      };
     default:
       return state;
   }

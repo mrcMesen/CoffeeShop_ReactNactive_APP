@@ -13,7 +13,6 @@ import { Line } from "../../components/Line";
 export const OrderCard = ({ order }) => {
   const { theme } = useContext(ThemeContext);
   const styles = useStyles(theme);
-  console.log("orders", order);
   const { createdAt, state, items } = order;
   const formatdate = new Date(createdAt);
 
@@ -28,7 +27,7 @@ export const OrderCard = ({ order }) => {
         <Text style={styles.whiteText}>State {state}</Text>
       </View>
       {items.map((product) => (
-        <View style={styles.description}>
+        <View key={product.id} style={styles.description}>
           <View style={styles.count}>
             <Text>{product.qty}</Text>
           </View>
@@ -57,7 +56,6 @@ const useStyles = (theme) =>
       flexDirection: "row",
       alignItems: "flex-end",
       marginVertical: 10,
-      // paddingHorizontal: 10,
     },
     productName: {
       marginHorizontal: 10,

@@ -9,4 +9,7 @@ export const CartActions = {
     type: CartDispatcher.REMOVE_PRODUCT,
     payload: { id: order.product.id, date: order.date },
   }),
+  emptyCart: () => ({
+    type: CartDispatcher.EMPTY_CART,
+  }),
 };

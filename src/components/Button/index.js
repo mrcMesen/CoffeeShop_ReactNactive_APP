@@ -9,6 +9,8 @@ import { ThemeContext } from "../../context/ThemeContext";
  * @param {color} string Allow primary and secondary for color
  * @param {text} string Text for button
  * @param {action} function Callback to onPress Action
+ * @param {style} function Styles for button wrapper
+ * @param {textStyle} function Styles for button text
  * @param {numberOfLines} int Give the number of lines for text in the button
  */
 
@@ -17,6 +19,7 @@ export const Button = ({
   text,
   action,
   style,
+  textStyle,
   numberOfLines = 1,
 }) => {
   const { theme } = useContext(ThemeContext);
@@ -35,7 +38,10 @@ export const Button = ({
       ]}
       onPress={action}
     >
-      <Text style={styles.buttonText} numberOfLines={numberOfLines}>
+      <Text
+        style={[styles.buttonText, textStyle && textStyle]}
+        numberOfLines={numberOfLines}
+      >
         {text}
       </Text>
     </TouchableOpacity>

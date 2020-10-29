@@ -48,11 +48,10 @@ export const CartProductList = ({ order }) => {
         style={styles.deleteButton}
       >
         <MaterialIcons
-          name='cancel'
-          size={16}
+          name='delete'
+          size={20}
           // color='#ad2028'
           color='gray'
-          // style={styles.deleteButton}
         />
       </TouchableOpacity>
     </View>

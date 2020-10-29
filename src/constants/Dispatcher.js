@@ -5,4 +5,5 @@ export const ProductsDispatcher = {
 export const CartDispatcher = {
   ADD_PRODUCT: "ADD_PRODUCT",
   REMOVE_PRODUCT: "REMOVE_PRODUCT",
+  EMPTY_CART: "EMPTY_CART",
 };
