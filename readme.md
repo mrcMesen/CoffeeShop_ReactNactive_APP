@@ -11,15 +11,38 @@ Developed by Marco Mesén - [www.marcomesen.com](https://marcomesen.com)
 
 ## Tech
 
-Project developed with react-native & expo, functions and hooks, react-navigation and a custom theme
+- [ReactNative]
+- [Expo]
+- [Function Components]
+- [Hooks]
+- [React-Navigation] - Manage the App navigation
+- [RN-image-slider-box] - For Image Slider
+- Theme was built without any UI Framework
 
 ## Architecture
 
 The project was developed thinking in Flux, that doesn't use Redux, but has the some similar things as actions, reducer (useReducer), global state (useContext)
 
-### Routing
+```
+-src
+---actions           ~ All actions to be dispatcher
+---app               ~ Entry point for app and routing
+---components        ~ Components for app
+---constants         ~ For keep standard
+---context           ~ Some Contexts to manage the app
+---reducer           ~ Manage the state with useReduce for each context
+---screens           ~ Sreens for APP
+-----Login           ~ Login
+-----Home            ~ Mainly Screen
+-----Product         ~ Screen to view products and add them to the cart
+-----Cart            ~ Manage the app cart
+-----Profile         ~ Shows the orders
+---utils             ~ Some utils functions as format number
+```
 
-Library React-Navigation
+## DEMO
+
+![Demo APP Coffee Shop](./demo/demo_coffeeapp.gif)]
 
 ## Assets - Copyrigth
 
